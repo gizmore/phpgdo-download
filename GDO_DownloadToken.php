@@ -53,19 +53,19 @@ final class GDO_DownloadToken extends GDO implements Orderable
 	/**
 	 * @return GDO_User
 	 */
-	public function getUser() { return $this->getValue('dlt_user'); }
+	public function getUser() { return $this->gdoValue('dlt_user'); }
 	public function getUserID() { return $this->gdoVar('dlt_user'); }
 
 	/**
 	 * @return GDO_Download
 	 */
-	public function getDowload() { return $this->getValue('dlt_download'); }
+	public function getDowload() { return $this->gdoValue('dlt_download'); }
 	public function getDowloadID() { return $this->gdoVar('dlt_download'); }
 	
 	/**
 	 * @return GDO_User
 	 */
-	public function getCreatedBy() { return $this->getValue('dlt_creator'); }
+	public function getCreatedBy() { return $this->gdoValue('dlt_creator'); }
 	public function getCreatedAt() { return $this->gdoVar('dlt_created'); }
 	public function getToken() { return $this->gdoVar('dlt_token'); }
 	

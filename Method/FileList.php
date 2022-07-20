@@ -28,7 +28,7 @@ final class FileList extends MethodQueryList
         $table->title('link_downloads', [$count]);
     }
     
-	public function isGuestAllowed()
+	public function isGuestAllowed() : bool
 	{
 		return Module_Download::instance()->cfgGuestDownload();
 	}

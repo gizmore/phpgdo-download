@@ -125,13 +125,13 @@ final class GDO_Download extends GDO
 	/**
 	 * @return GDO_File
 	 */
-	public function getFile() { return $this->getValue('dl_file'); }
+	public function getFile() { return $this->gdoValue('dl_file'); }
 	public function getFileID() { return $this->gdoVar('dl_file'); }
 	
 	/**
 	 * @return GDO_User
 	 */
-	public function getCreator() { return $this->getValue('dl_creator'); }
+	public function getCreator() { return $this->gdoValue('dl_creator'); }
 	public function getCreatorID() { return $this->gdoVar('dl_creator'); }
 	public function getCreateDate() { return $this->gdoVar('dl_created'); }
 	/**
