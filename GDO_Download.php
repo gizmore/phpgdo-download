@@ -85,7 +85,7 @@ final class GDO_Download extends GDO
 	private function href_with($method) { return href('Download', $method, $this->href_appendix()); }
 	private function href_appendix() { return '&title=' . seo($this->displayTitle()) . '&id=' . $this->getID(); }
 	
-	public function gdoHashcode() { return self::gdoHashcodeS($this->getVars(['dl_id', 'dl_title', 'dl_category', 'dl_file', 'dl_created', 'dl_creator'])); }
+	public function gdoHashcode() : string { return self::gdoHashcodeS($this->getVars(['dl_id', 'dl_title', 'dl_category', 'dl_file', 'dl_created', 'dl_creator'])); }
 
 	public function canEdit(GDO_User $user) { return $user->hasPermission('staff'); } 
 	public function canView(GDO_User $user) { return ($this->isAccepted() && (!$this->isDeleted())) || $user->isStaff(); }
@@ -160,12 +160,12 @@ final class GDO_Download extends GDO
 	##############
 	### Render ###
 	##############
-	public function renderCard()
+	public function renderCard() : string
 	{
 		return GDT_Template::php('Download', 'card/download.php', ['gdo' => $this]);
 	}
 	
-	public function renderList()
+	public function renderList() : string
 	{
 		return GDT_Template::php('Download', 'list/download.php', ['download' => $this]);
 	}
@@ -183,7 +183,7 @@ final class GDO_Download extends GDO
 		return $cached;
 	}
 	
-	public function gdoAfterCreate()
+	public function gdoAfterCreate(GDO $gdo) : void
 	{
 		Cache::remove('gdo_download_count');
 	}

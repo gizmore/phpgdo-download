@@ -8,7 +8,7 @@ use GDO\Util\Common;
 
 final class Accept extends Method
 {
-	public function isAlwaysTransactional() { return true; }
+	public function isAlwaysTransactional() : bool { return true; }
 	
 	public function execute()
 	{
