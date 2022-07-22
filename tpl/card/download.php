@@ -22,14 +22,14 @@ $card->creatorHeader($gdo->gdoColumn('dl_title'));
 // $card->subtitle($gdo->gdoMessage());
 
 // Card content
-$card->addFields(array(
+$card->addFields(
     $gdo->gdoColumn('dl_file'),
 //     $file->gdoColumn('file_type')->gdo($gdo->getFile()),
     $gdo->gdoColumn('dl_downloads'),
     $gdo->gdoColumn('dl_votes'),
     $gdo->gdoColumn('dl_rating'),
 	
-));
+);
 if ($gdo->isPaid())
 {
 	$card->addField($gdo->gdoColumn('dl_price'));

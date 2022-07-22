@@ -37,10 +37,10 @@ $subc->addField(GDT_Label::make('downloads'));
 $li->subtext($subc);
 
 # Actions
-$li->actions()->addFields(array(
+$li->actions()->addFields(
 	GDT_Button::make('btn_download')->href($download->href_view())->icon('download'),
 	GDT_Button::make('btn_edit')->href($download->href_edit())->icon('edit')->disabled(!$download->canEdit(GDO_User::current())),
-));
+);
 
 # Render
 echo $li->render();
