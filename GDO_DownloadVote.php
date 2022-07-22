@@ -1,7 +1,7 @@
 <?php
 namespace GDO\Download;
 
-use GDO\Vote\GDO_VoteTable;
+use GDO\Votes\GDO_VoteTable;
 
 /**
  * Vote table for downloads.

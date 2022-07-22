@@ -7,7 +7,7 @@ use GDO\Tests\MethodTest;
 use GDO\Download\GDO_Download;
 use function PHPUnit\Framework\assertEquals;
 use GDO\Tests\Module_Tests;
-use GDO\Vote\Method\Up;
+use GDO\Votes\Method\Up;
 use GDO\Download\GDO_DownloadVote;
 use GDO\Download\Module_Download;
 use function PHPUnit\Framework\assertMatchesRegularExpression;

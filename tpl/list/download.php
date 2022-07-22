@@ -9,7 +9,7 @@ use GDO\UI\GDT_Paragraph;
 use GDO\User\GDO_User;
 use GDO\UI\GDT_Container;
 use GDO\UI\GDT_Label;
-use GDO\Vote\GDT_VoteSelection;
+use GDO\Votes\GDT_VoteSelection;
 use GDO\UI\GDT_Bar;
 
 # ListItem
