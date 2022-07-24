@@ -1,13 +1,12 @@
 <?php
 namespace GDO\Download\Method;
 
+use GDO\Core\GDO;
 use GDO\Core\GDO_Error;
 use GDO\Core\GDT_Response;
 use GDO\Download\GDO_Download;
 use GDO\Download\Module_Download;
 use GDO\User\GDO_User;
-use GDO\Core\GDT_Object;
-use GDO\Core\GDT_ResponseCard;
 use GDO\UI\MethodCard;
 use GDO\UI\GDT_CardView;
 
@@ -20,18 +19,11 @@ use GDO\UI\GDT_CardView;
  */
 final class View extends MethodCard
 {
-	public function gdoTable()
+	public function gdoTable() : GDO
 	{
 		return GDO_Download::table();
 	}
 	
-// 	public function gdoParameters() : array
-// 	{
-// 		return [
-// 			GDT_Object::make('id')->table(GDO_Download::table())->notNull(),
-// 		];
-// 	}
-
 	public function beforeExecute() : void
 	{
 		$module = Module_Download::instance();

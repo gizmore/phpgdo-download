@@ -9,7 +9,7 @@ use GDO\Payment\Orderable;
 use GDO\Payment\PaymentModule;
 use GDO\Core\GDT_Template;
 use GDO\UI\GDT_Success;
-use GDO\DB\GDT_Token;
+use GDO\Core\GDT_Token;
 use GDO\User\GDT_User;
 use GDO\User\GDO_User;
 /**

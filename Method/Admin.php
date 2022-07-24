@@ -2,6 +2,7 @@
 namespace GDO\Download\Method;
 
 use GDO\Admin\MethodAdmin;
+use GDO\Core\GDO;
 use GDO\Download\GDO_Download;
 use GDO\Table\MethodQueryTable;
 
@@ -17,6 +18,6 @@ final class Admin extends MethodQueryTable
 
 	public function getPermission() : ?string { return 'staff'; }
 	
-    public function gdoTable() { return GDO_Download::table(); }
+    public function gdoTable() : GDO { return GDO_Download::table(); }
 
 }

@@ -3,8 +3,8 @@
  * This is the default download list item template.
  * It has no html at all, so it should be compatible with all themes :)
  */
+use GDO\Table\GDT_ListItem;
 use GDO\UI\GDT_Button;
-use GDO\UI\GDT_ListItem;
 use GDO\UI\GDT_Paragraph;
 use GDO\User\GDO_User;
 use GDO\UI\GDT_Container;

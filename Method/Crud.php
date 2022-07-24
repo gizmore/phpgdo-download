@@ -24,7 +24,7 @@ use GDO\User\GDO_User;
  */
 final class Crud extends MethodCrud
 {
-	public function gdoTable() { return GDO_Download::table(); }
+	public function gdoTable() : GDO { return GDO_Download::table(); }
 	public function hrefList() { return href('Download', 'FileList'); }
 	
 	public function beforeExecute() : void
@@ -34,7 +34,7 @@ final class Crud extends MethodCrud
 	
 	protected function crudCreateTitle()
 	{
-		$this->title(t('ft_download_upload', [sitename()]));
+		$this->title(t('mt_download_upload', [sitename()]));
 	}
 	
 	public function createForm(GDT_Form $form) : void
@@ -47,7 +47,7 @@ final class Crud extends MethodCrud
 		}
 	}
 	
-	public function createFormButtons(GDT_Form $form)
+	public function createFormButtons(GDT_Form $form) : void
 	{
 		parent::createFormButtons($form);
 		$user = GDO_User::current();

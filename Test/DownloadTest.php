@@ -3,7 +3,6 @@ namespace GDO\Download\Test;
 
 use GDO\Tests\TestCase;
 use GDO\Download\Method\Crud;
-use GDO\Tests\MethodTest;
 use GDO\Download\GDO_Download;
 use function PHPUnit\Framework\assertEquals;
 use GDO\Tests\Module_Tests;
@@ -11,6 +10,7 @@ use GDO\Votes\Method\Up;
 use GDO\Download\GDO_DownloadVote;
 use GDO\Download\Module_Download;
 use function PHPUnit\Framework\assertMatchesRegularExpression;
+use GDO\Core\GDT_Method;
 use GDO\Core\Website;
 use GDO\Download\Method\File;
 
@@ -31,7 +31,7 @@ final class DownloadTest extends TestCase
             'dl_info' => 'A test file for upload',
             'dl_level' => '0',
         ];
-        $r = MethodTest::make()->method($m)->parameters($p);
+        $r = GDT_Method::make()->method($m)->parameters($p);
         $r = $r->execute('create');
         $out = $r->renderHTML();
         
@@ -44,7 +44,7 @@ final class DownloadTest extends TestCase
             'dl_info' => 'Some punk music',
             'dl_level' => '1',
         ];
-        MethodTest::make()->method($m)->parameters($p)->execute('create');
+        GDT_Method::make()->method($m)->parameters($p)->execute('create');
         
         
         assertEquals(2, GDO_Download::table()->countWhere(), 'Test upload of an mp3 file.');

@@ -6,7 +6,7 @@ return array(
 ###########################################################################
 'link_downloads' => '%s Downloads',
 'link_upload' => 'Upload',
-'ft_download_upload' => 'Upload',
+'mt_download_upload' => 'Upload',
 ###########################################################################
 'list_filelist' => 'Downloads',
 'li_download_count' => 'Downloads: %s',
@@ -14,7 +14,7 @@ return array(
 'li_download_price' => 'Preis: %s',
 'btn_download' => 'Download',
 ###########################################################################
-'ft_download_order' => 'Datei erwerben',
+'mt_download_order' => 'Datei erwerben',
 'card_title_downloadtoken' => 'Sie erwerben die Datei &quot;%s&quot;',
 'card_title_downloadprice' => 'Preis: %s',
 ###########################################################################

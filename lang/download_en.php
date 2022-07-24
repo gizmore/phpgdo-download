@@ -6,14 +6,14 @@ return array(
 ###########################################################################
 'link_downloads' => '%s Downloads',
 'link_upload' => 'Upload',
-'ft_download_upload' => 'Upload',
+'mt_download_upload' => 'Upload',
 ###########################################################################
 'list_filelist' => 'Downloads',
 'download_listitem_subtext' => '%s downloads with a vote of %s counting %s votes.',
 'dlg_download_purchase_title' => 'Purchase',
 'btn_download' => 'Download',
 ###########################################################################
-'ft_download_order' => 'Purchase File',
+'mt_download_order' => 'Purchase File',
 'card_title_downloadtoken' => 'Purchase File &quot;%s&quot;',
 'card_title_downloadprice' => 'Price: %s',
 ###########################################################################

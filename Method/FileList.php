@@ -1,6 +1,7 @@
 <?php
 namespace GDO\Download\Method;
 
+use GDO\Core\GDO;
 use GDO\Download\GDO_Download;
 use GDO\Download\Module_Download;
 use GDO\File\GDO_File;
@@ -38,7 +39,7 @@ final class FileList extends MethodQueryList
 	    Module_Download::instance()->renderTabs();
 	}
 	
-	public function gdoTable()
+	public function gdoTable() : GDO
 	{
 		return GDO_Download::table();
 	}

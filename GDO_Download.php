@@ -7,10 +7,10 @@ use GDO\Core\GDO;
 use GDO\Core\GDT_AutoInc;
 use GDO\Core\GDT_CreatedAt;
 use GDO\Core\GDT_CreatedBy;
-use GDO\DB\GDT_DeletedAt;
-use GDO\DB\GDT_DeletedBy;
+use GDO\Core\GDT_DeletedAt;
+use GDO\Core\GDT_DeletedBy;
 use GDO\Core\GDT_EditedAt;
-use GDO\DB\GDT_EditedBy;
+use GDO\Core\GDT_EditedBy;
 use GDO\Date\GDT_DateTime;
 use GDO\File\GDO_File;
 use GDO\File\GDT_File;
@@ -188,7 +188,7 @@ final class GDO_Download extends GDO
 		Cache::remove('gdo_download_count');
 	}
 	
-	public function gdoAfterDelete()
+	public function gdoAfterDelete(GDO $gdo) : void
 	{
 	    Cache::remove('gdo_download_count');
 	}
