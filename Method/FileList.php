@@ -17,7 +17,7 @@ use GDO\Table\GDT_Table;
  */
 final class FileList extends MethodQueryList
 {
-    public function getTitle()
+    public function getMethodTitle() : string
     {
         $count = GDO_Download::countDownloads();
         return t('link_downloads', [$count]);

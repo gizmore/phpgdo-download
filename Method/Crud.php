@@ -12,12 +12,13 @@ use GDO\Language\Trans;
 use GDO\Mail\Mail;
 use GDO\UI\GDT_Link;
 use GDO\User\GDO_User;
+
 /**
  * Download CRUD form.
  * Sends approval mail.
  * 
  * @author gizmore
- * @version 6.10.3
+ * @version 7.0.1
  * @since 5.0.0
  * 
  * @see GDO_Download
@@ -25,7 +26,7 @@ use GDO\User\GDO_User;
 final class Crud extends MethodCrud
 {
 	public function gdoTable() : GDO { return GDO_Download::table(); }
-	public function hrefList() { return href('Download', 'FileList'); }
+	public function hrefList() : string { return href('Download', 'FileList'); }
 	
 	public function beforeExecute() : void
 	{
