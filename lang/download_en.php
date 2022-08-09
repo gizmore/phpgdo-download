@@ -38,4 +38,8 @@ If you like you can approve this download by visiting this link:
 Kind Regards
 The %2$s Team',
 ###########################################################################
+
+	'mt_download_view' => '%s',
+	'mt_download_accept' => 'Accept Download',
+	
 );

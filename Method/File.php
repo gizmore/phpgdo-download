@@ -8,6 +8,11 @@ use GDO\User\GDO_User;
 use GDO\File\Method\GetFile;
 use GDO\Core\GDT_Object;
 
+/**
+ * Download a download. 
+ * @author gizmore
+ * @version 7.0.1
+ */
 final class File extends Method
 {
     public function gdoParameters() : array
@@ -17,10 +22,20 @@ final class File extends Method
         ];
     }
     
+    public function getMethodTitle() : string
+    {
+    	return $this->getDownload()->displayTitle();
+    }
+    	
+    protected function getDownload() : GDO_Download
+    {
+    	return $this->gdoParameterValue('id');
+    }
+    
 	public function execute()
 	{
 		$user = GDO_User::current();
-		$download = $this->gdoParameterValue('id');
+		$download = $this->getDownload();
 		if (!$download->canDownload($user))
 		{
 			GDO_Download::notFoundException($download->getID());

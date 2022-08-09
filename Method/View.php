@@ -14,7 +14,7 @@ use GDO\UI\GDT_CardView;
  * View a download for downloading or purchase.
  *
  * @author gizmore
- * @version 6.10.6
+ * @version 7.0.1
  * @since 3.1.0
  */
 final class View extends MethodCard
@@ -29,12 +29,22 @@ final class View extends MethodCard
 		$module = Module_Download::instance();
 		$module->renderTabs();
 	}
+	
+	protected function getDownload() : ?GDO_Download
+	{
+		return $this->getObject();
+	}
+	
+	public function getMethodTitle() : string
+	{
+		$dl = $this->getDownload();
+		return t('mt_download_view', [$dl->displayTitle()]);
+	}
 
 	public function execute()
 	{
-		/** @var $dl GDO_Download **/
 		# File
-		$dl = $this->getObject();
+		$dl = $this->getDownload();
 
 		# Security
 		$user = GDO_User::current();
