@@ -2,6 +2,7 @@
 namespace GDO\Download\Method;
 
 use GDO\Core\GDO;
+use GDO\DB\Query;
 use GDO\Download\GDO_Download;
 use GDO\Download\Module_Download;
 use GDO\File\GDO_File;
@@ -44,7 +45,7 @@ final class FileList extends MethodQueryList
 		return GDO_Download::table();
 	}
 	
-	public function getQuery()
+	public function getQuery() : Query
 	{
 		$userid = GDO_User::current()->getID();
 		return GDO_Download::table()->select('gdo_download.*, gdo_file.*, v.vote_value own_vote')->

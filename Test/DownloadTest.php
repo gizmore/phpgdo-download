@@ -1,6 +1,7 @@
 <?php
 namespace GDO\Download\Test;
 
+use GDO\Tests\GDT_MethodTest;
 use GDO\Tests\TestCase;
 use GDO\Download\Method\Crud;
 use GDO\Download\GDO_Download;
@@ -60,7 +61,7 @@ final class DownloadTest extends TestCase
             'id' => $dl->getID(),
             'rate' => '5',
         ];
-        MethodTest::make()->method($m)->getParameters($p)->execute();
+        GDT_MethodTest::make()->method($m)->getParameters($p)->execute();
         $this->assert200('Assert voting works');
         assertEquals(5, $dl->getVoteRating(), 'Assert vote outcome is 5 on download.');
         
@@ -71,17 +72,17 @@ final class DownloadTest extends TestCase
             'id' => $dl->getID(),
             'rate' => '4',
         ];
-        MethodTest::make()->method($m)->getParameters($p)->execute();
+        GDT_MethodTest::make()->method($m)->getParameters($p)->execute();
         assertEquals(4, $dl->getVoteRating(), 'Assert vote outcome is 4 after revote.');
         
         # Blockers
         $this->userGaston();
         Module_Download::instance()->saveConfigVar('dl_vote_guest', '0');
-        MethodTest::make()->method($m)->getParameters($p)->execute();
+        GDT_MethodTest::make()->method($m)->getParameters($p)->execute();
         assertMatchesRegularExpression('/Guests are not allowed/', Website::$TOP_RESPONSE->render(), 'Check Guest block.');
         
         Module_Download::instance()->saveConfigVar('dl_vote_guest', '1');
-        MethodTest::make()->method($m)->getParameters($p)->execute();
+        GDT_MethodTest::make()->method($m)->getParameters($p)->execute();
         assertMatchesRegularExpression('/recently/', Website::$TOP_RESPONSE->render(), 'Check IP vote block.');
     }
     
@@ -90,7 +91,7 @@ final class DownloadTest extends TestCase
         $dl = GDO_Download::findById('1');
         $m = File::make();
         $p = ['id' => $dl->getID()];
-        MethodTest::make()->method($m)->getParameters($p)->execute();
+        GDT_MethodTest::make()->method($m)->getParameters($p)->execute();
         $this->assert200('Test if download does work.');
     }
     
