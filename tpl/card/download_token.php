@@ -22,8 +22,8 @@ $user = GDO_User::current();
 	<div><?= t('type'); ?>: <?= $file->getType(); ?></div>
 	<div><?= t('size'); ?>: <?= $file->displaySize(); ?></div>
 	<div><?= t('downloads'); ?>: <?= $dl->getDownloads(); ?></div>
-	<div><?= t('votes'); ?>: <?= $dl->gdoColumn('dl_votes')->renderCell(); ?></div>
-	<div><?= t('rating'); ?>: <?= $dl->gdoColumn('dl_rating')->renderCell(); ?></div>
+	<div><?= t('votes'); ?>: <?= $dl->gdoColumn('dl_votes')->renderHTML(); ?></div>
+	<div><?= t('rating'); ?>: <?= $dl->gdoColumn('dl_rating')->renderHTML(); ?></div>
 	<div><?= t('price'); ?>: <?= $dl->displayPrice(); ?></div>
   </md-card-content>
 </md-card>
