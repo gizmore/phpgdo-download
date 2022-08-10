@@ -29,7 +29,7 @@ final class Module_Download extends GDO_Module
 	public int $priority = 70;
 	public function onLoadLanguage() : void { $this->loadLanguage('lang/download'); }
 	public function getClasses() : array { return [GDO_Download::class, GDO_DownloadVote::class, GDO_DownloadToken::class]; }
-	public function href_administrate_module() : ?string { return href('Download', 'Admin'); }
+	public function hrefAdministration() : ?string { return href('Download', 'Admin'); }
 	
 	public function getDependencies() : array
 	{
