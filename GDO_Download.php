@@ -175,7 +175,7 @@ final class GDO_Download extends GDO
 	#############
 	public static function countDownloads()
 	{
-		if (false === ($cached = Cache::get('gdo_download_count')))
+		if (null === ($cached = Cache::get('gdo_download_count')))
 		{
 			$cached = self::table()->countWhere("dl_deleted IS NULL AND dl_accepted IS NOT NULL");
 			Cache::set('gdo_download_count', $cached);
