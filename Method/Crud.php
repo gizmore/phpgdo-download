@@ -54,7 +54,7 @@ final class Crud extends MethodCrud
 		$user = GDO_User::current();
 		if ($user->isStaff())
 		{
-			if ($this->gdo && !$this->gdo->isAccepted())
+			if (isset($this->gdo) && !$this->gdo->isAccepted())
 			{
 				$form->actions()->addField(GDT_Submit::make('accept'));
 			}
