@@ -83,7 +83,12 @@ final class GDO_Download extends GDO
 	public function href_download() { return $this->href_with('File'); }
 
 	private function href_with($method) { return href('Download', $method, $this->href_appendix()); }
-	private function href_appendix() { return '&title=' . seo($this->displayTitle()) . '&id=' . $this->getID(); }
+	private function href_appendix()
+	{
+		return
+			'&id=' . $this->getID() . 
+			'&title=' . seo($this->displayTitle());
+	}
 	
 	public function gdoHashcode() : string { return self::gdoHashcodeS($this->gdoVars(['dl_id', 'dl_title', 'dl_category', 'dl_file', 'dl_created', 'dl_creator'])); }
 
