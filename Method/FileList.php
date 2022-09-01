@@ -35,7 +35,7 @@ final class FileList extends MethodQueryList
 		return Module_Download::instance()->cfgGuestDownload();
 	}
 	
-	public function beforeExecute() : void
+	public function onRenderTabs() : void
 	{
 	    Module_Download::instance()->renderTabs();
 	}

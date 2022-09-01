@@ -24,7 +24,7 @@ final class View extends MethodCard
 		return GDO_Download::table();
 	}
 	
-	public function beforeExecute() : void
+	public function onRenderTabs() : void
 	{
 		$module = Module_Download::instance();
 		$module->renderTabs();

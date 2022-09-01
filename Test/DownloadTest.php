@@ -32,7 +32,7 @@ final class DownloadTest extends TestCase
             'dl_info' => 'A test file for upload',
             'dl_level' => '0',
         ];
-        $r = GDT_Method::make()->method($m)->parameters($p);
+        $r = GDT_Method::make()->method($m)->inputs($p);
         $r = $r->execute('create');
         $out = $r->renderHTML();
         
@@ -45,7 +45,7 @@ final class DownloadTest extends TestCase
             'dl_info' => 'Some punk music',
             'dl_level' => '1',
         ];
-        GDT_Method::make()->method($m)->parameters($p)->execute('create');
+        GDT_Method::make()->method($m)->inputs($p)->execute('create');
         
         
         assertEquals(2, GDO_Download::table()->countWhere(), 'Test upload of an mp3 file.');

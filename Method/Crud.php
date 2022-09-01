@@ -28,7 +28,7 @@ final class Crud extends MethodCrud
 	public function gdoTable() : GDO { return GDO_Download::table(); }
 	public function hrefList() : string { return href('Download', 'FileList'); }
 	
-	public function beforeExecute() : void
+	public function onRenderTabs() : void
 	{
 		Module_Download::instance()->renderTabs();
 	}
