@@ -14,6 +14,7 @@ use function PHPUnit\Framework\assertMatchesRegularExpression;
 use GDO\Core\GDT_Method;
 use GDO\Core\Website;
 use GDO\Download\Method\File;
+use GDO\UI\GDT_Page;
 
 /**
  * Download also tests payment and voting.
@@ -79,11 +80,11 @@ final class DownloadTest extends TestCase
         $this->userGaston();
         Module_Download::instance()->saveConfigVar('dl_vote_guest', '0');
         GDT_MethodTest::make()->method($m)->getParameters($p)->execute();
-        assertMatchesRegularExpression('/Guests are not allowed/', Website::$TOP_RESPONSE->render(), 'Check Guest block.');
+        assertMatchesRegularExpression('/Guests are not allowed/', GDT_Page::$INSTANCE->topResponse()->render(), 'Check Guest block.');
         
         Module_Download::instance()->saveConfigVar('dl_vote_guest', '1');
         GDT_MethodTest::make()->method($m)->getParameters($p)->execute();
-        assertMatchesRegularExpression('/recently/', Website::$TOP_RESPONSE->render(), 'Check IP vote block.');
+        assertMatchesRegularExpression('/recently/', GDT_Page::$INSTANCE->topResponse()->render(), 'Check IP vote block.');
     }
     
     public function testDownload()
