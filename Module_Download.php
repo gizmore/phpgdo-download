@@ -74,7 +74,7 @@ final class Module_Download extends GDO_Module
 	    if ($this->cfgHookLeftBar())
 	    {
 	        $count = GDO_Download::countDownloads();
-	        $link = GDT_Link::make()->label('link_downloads', [$count])->href(href('Download', 'FileList'));
+	        $link = GDT_Link::make()->text('link_downloads', [$count])->href(href('Download', 'FileList'));
 	        GDT_Page::instance()->leftBar()->addField($link);
 	    }
 	}
