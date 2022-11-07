@@ -7,10 +7,11 @@ use GDO\Form\GDT_Form;
 use GDO\Payment\Payment_Order;
 use GDO\User\GDO_User;
 use GDO\Util\Common;
+use GDO\Payment\Orderable;
 
 final class Order extends Payment_Order
 {
-	public function getOrderable()
+	public function getOrderable() : Orderable
 	{
 		$download = GDO_Download::table()->find(Common::getRequestString('id'));
 		$user = GDO_User::current()->persistent();
@@ -28,6 +29,10 @@ final class Order extends Payment_Order
 	public function createForm(GDT_Form $form) : void
 	{
 		
+	}
+	
+	public function onCancelOrder(): void
+	{
 	}
 	
 }
