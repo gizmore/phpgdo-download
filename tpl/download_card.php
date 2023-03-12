@@ -1,4 +1,5 @@
 <?php
+namespace GDO\Download\tpl;
 /**
  * This template file (download card) uses only code to arrange the outcome.
  * This way there is no need for an additional template.
@@ -18,13 +19,11 @@ $user = GDO_User::current();
 // Card with title
 $card = GDT_Card::make('gdo-download')->gdo($gdo);
 
-$card->creatorHeader($gdo->gdoColumn('dl_title'));
-// $card->subtitle($gdo->gdoMessage());
+$card->creatorHeader(null, null, $gdo->displayTitle());
 
 // Card content
 $card->addFields(
     $gdo->gdoColumn('dl_file'),
-//     $file->gdoColumn('file_type')->gdo($gdo->getFile()),
     $gdo->gdoColumn('dl_downloads'),
     $gdo->gdoColumn('dl_votes'),
     $gdo->gdoColumn('dl_rating'),

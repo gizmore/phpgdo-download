@@ -1,12 +1,8 @@
 <?php 
-use GDO\Download\GDO_DownloadToken;
-use GDO\User\GDO_User;
-$gdo instanceof GDO_DownloadToken;
+namespace GDO\Download\tpl\card;
+/** @var $gdo \GDO\Download\GDO_DownloadToken **/
 $dl = $gdo->getDowload();
 $file = $dl->getFile(); ?>
-<?php
-$user = GDO_User::current();
-?>
 <md-card class="gdo-downloadtoken">
   <md-card-title>
 	<md-card-title-text>

@@ -12,7 +12,6 @@ use GDO\Download\GDO_DownloadVote;
 use GDO\Download\Module_Download;
 use function PHPUnit\Framework\assertMatchesRegularExpression;
 use GDO\Core\GDT_Method;
-use GDO\Core\Website;
 use GDO\Download\Method\File;
 use GDO\UI\GDT_Page;
 
@@ -25,7 +24,7 @@ final class DownloadTest extends TestCase
     public function testUpload()
     {
         $path = Module_Tests::instance()->filePath(
-            'Test/data/upload.txt');
+            'data/upload.txt');
         $this->fakeFileUpload('dl_file', 'upload.txt', $path);
         $m = Crud::make();
         $p = [
@@ -35,11 +34,12 @@ final class DownloadTest extends TestCase
         ];
         $r = GDT_Method::make()->method($m)->inputs($p);
         $r = $r->execute('create');
-        $out = $r->renderHTML();
+        $r->renderHTML();
+        $this->assertOK('Test if plaintext can be uploaded');
         
         $path = Module_Tests::instance()->filePath(
-            'Test/data/01_BAND_SCHEIBE_VORFALL_-_INTRO_4.mp3');
-        $this->fakeFileUpload('dl_file', 'ranzintro.mp3', $path);
+            'data/v8.mp3');
+        $this->fakeFileUpload('dl_file', 'intro.mp3', $path);
         $m = Crud::make();
         $p = [
             'dl_title' => 'RanzIntro',
@@ -47,7 +47,6 @@ final class DownloadTest extends TestCase
             'dl_level' => '1',
         ];
         GDT_Method::make()->method($m)->inputs($p)->execute('create');
-        
         
         assertEquals(2, GDO_Download::table()->countWhere(), 'Test upload of an mp3 file.');
     }

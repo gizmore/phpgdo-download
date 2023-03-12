@@ -1,11 +1,12 @@
-<?php /** @var \GDO\Download\GDO_Download $download **/
+<?php
+namespace GDO\Download\tpl;
+/** @var \GDO\Download\GDO_Download $download **/
 /**
  * This is the default download list item template.
  * It has no html at all, so it should be compatible with all themes :)
  */
 use GDO\Table\GDT_ListItem;
 use GDO\UI\GDT_Button;
-use GDO\UI\GDT_Paragraph;
 use GDO\User\GDO_User;
 use GDO\UI\GDT_Container;
 use GDO\UI\GDT_Label;
@@ -15,7 +16,7 @@ use GDO\UI\GDT_Bar;
 # ListItem
 $li = GDT_ListItem::make()->gdo($download);
 
-$li->creatorHeader($download->gdoColumn('dl_title'));
+$li->creatorHeader(null, null, $download->displayTitle());
 
 # Content
 $content = GDT_Container::make()->vertical();
@@ -24,8 +25,7 @@ if ($download->isPaid())
 {
     $content->addField($download->gdoColumn('dl_price'));
 }
-
-$li->content(GDT_Paragraph::make()->textRaw($download->displayInfoText()));
+$li->content($content);
 
 # Subtext
 $subc = GDT_Bar::make()->horizontal()->css('width', 'fit-content');
@@ -34,7 +34,7 @@ $subc->addField($download->gdoColumn('dl_rating'));
 $subc->addField($download->gdoColumn('dl_votes'));
 $subc->addField($download->gdoColumn('dl_downloads'));
 $subc->addField(GDT_Label::make('downloads'));
-$li->subtext($subc);
+$content->addField($subc);
 
 # Actions
 $li->actions()->addFields(

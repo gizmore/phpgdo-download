@@ -4,6 +4,7 @@ namespace GDO\Download;
 use GDO\Core\GDO_Module;
 use GDO\Core\GDT_Checkbox;
 use GDO\Core\GDT_Int;
+use GDO\UI\GDT_Bar;
 use GDO\UI\GDT_Link;
 use GDO\UI\GDT_Page;
 
@@ -18,7 +19,7 @@ use GDO\UI\GDT_Page;
  * @see Module_Payment
  * @see GDO_Download
  * 
- * @version 6.10.6
+ * @version 7.0.2
  * @since 3.5.0
  */
 final class Module_Download extends GDO_Module
@@ -31,10 +32,18 @@ final class Module_Download extends GDO_Module
 	public function getClasses() : array { return [GDO_Download::class, GDO_DownloadVote::class, GDO_DownloadToken::class]; }
 	public function href_administrate_module() : ?string { return href('Download', 'Admin'); }
 	
-	public function getDependencies() : array
+	public function getDependencies(): array
 	{
 		return [
+			'File',
 			'Payment',
+		];
+	}
+	
+	public function getFriendencies(): array
+	{
+		return [
+			'Avatar',
 		];
 	}
 
@@ -64,9 +73,13 @@ final class Module_Download extends GDO_Module
 	##############
 	public function renderTabs()
 	{
-	    GDT_Page::$INSTANCE->topBar()->addField(
-	        $this->templatePHP('tabs.php')
-        );
+		$count = GDO_Download::countDownloads();
+		$bar = GDT_Bar::make()->horizontal();
+		$bar->addFields(
+			GDT_Link::make('link_downloads')->icon('download')->href(href('Download', 'FileList'))->text('link_downloads', [$count]),
+			GDT_Link::make('link_upload')->icon('upload')->href(href('Download', 'Crud')),
+		);
+		GDT_Page::instance()->topResponse()->addField($bar);
 	}
 	
 	public function onInitSidebar() : void
