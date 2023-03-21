@@ -6,39 +6,40 @@ use GDO\Core\GDO_Error;
 use GDO\Core\GDT_Response;
 use GDO\Download\GDO_Download;
 use GDO\Download\Module_Download;
-use GDO\User\GDO_User;
-use GDO\UI\MethodCard;
 use GDO\UI\GDT_CardView;
+use GDO\UI\MethodCard;
+use GDO\User\GDO_User;
 
 /**
  * View a download for downloading or purchase.
  *
- * @author gizmore
  * @version 7.0.1
  * @since 3.1.0
+ * @author gizmore
  */
 final class View extends MethodCard
 {
-	public function gdoTable() : GDO
+
+	public function gdoTable(): GDO
 	{
 		return GDO_Download::table();
 	}
-	
-	public function onRenderTabs() : void
+
+	public function onRenderTabs(): void
 	{
 		$module = Module_Download::instance();
 		$module->renderTabs();
 	}
-	
-	protected function getDownload() : ?GDO_Download
-	{
-		return $this->getObject();
-	}
-	
-	public function getMethodTitle() : string
+
+	public function getMethodTitle(): string
 	{
 		$dl = $this->getDownload();
 		return t('mt_download_view', [$dl->displayTitle()]);
+	}
+
+	protected function getDownload(): ?GDO_Download
+	{
+		return $this->getObject();
 	}
 
 	public function execute()
@@ -53,12 +54,12 @@ final class View extends MethodCard
 			throw new GDO_Error('err_gdo_not_found',
 				[
 					$dl->gdoHumanName(),
-					$dl->getID()
+					$dl->getID(),
 				]);
 		}
-		
+
 		# Render
 		return GDT_Response::makeWith(GDT_CardView::make()->gdo($dl));
 	}
-	
+
 }

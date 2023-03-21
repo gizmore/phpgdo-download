@@ -1,17 +1,21 @@
 <?php
 namespace GDO\Download\tpl;
-/** @var \GDO\Download\GDO_Download $download **/
+
+/** @var GDO_Download $download * */
+
 /**
  * This is the default download list item template.
  * It has no html at all, so it should be compatible with all themes :)
  */
+
+use GDO\Download\GDO_Download;
 use GDO\Table\GDT_ListItem;
+use GDO\UI\GDT_Bar;
 use GDO\UI\GDT_Button;
-use GDO\User\GDO_User;
 use GDO\UI\GDT_Container;
 use GDO\UI\GDT_Label;
+use GDO\User\GDO_User;
 use GDO\Votes\GDT_VoteSelection;
-use GDO\UI\GDT_Bar;
 
 # ListItem
 $li = GDT_ListItem::make()->gdo($download);
@@ -23,7 +27,7 @@ $content = GDT_Container::make()->vertical();
 $content->addField($download->gdoColumn('dl_info'));
 if ($download->isPaid())
 {
-    $content->addField($download->gdoColumn('dl_price'));
+	$content->addField($download->gdoColumn('dl_price'));
 }
 $li->content($content);
 

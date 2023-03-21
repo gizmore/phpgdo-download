@@ -1,5 +1,6 @@
 <?php
 namespace GDO\Download\lang;
+
 return [
 	'gdo_download' => 'Download',
 	'downloads' => 'Downloads',

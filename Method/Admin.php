@@ -8,16 +8,18 @@ use GDO\Table\MethodQueryTable;
 
 /**
  * Staff overview of downloads.
- * @author gizmore
+ *
  * @version 6.10
  * @since 6.04
+ * @author gizmore
  */
 final class Admin extends MethodQueryTable
 {
+
 	use MethodAdmin;
 
-	public function getPermission() : ?string { return 'staff'; }
-	
-    public function gdoTable() : GDO { return GDO_Download::table(); }
+	public function getPermission(): ?string { return 'staff'; }
+
+	public function gdoTable(): GDO { return GDO_Download::table(); }
 
 }
