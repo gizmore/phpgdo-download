@@ -1,6 +1,8 @@
 <?php
 namespace GDO\Download\Method;
 
+use GDO\Core\GDT;
+use GDO\Core\GDT_Response;
 use GDO\Core\Method;
 use GDO\Date\Time;
 use GDO\Download\GDO_Download;
@@ -11,7 +13,7 @@ final class Accept extends Method
 
 	public function isAlwaysTransactional(): bool { return true; }
 
-	public function execute()
+	public function execute(): GDT
 	{
 		$table = GDO_Download::table();
 		$id = Common::getRequestString('id', '0');
@@ -26,6 +28,7 @@ final class Accept extends Method
 			'dl_accepted' => Time::getDate(),
 			'dl_acceptor' => Common::getGetInt('by'),
 		]);
+		return GDT_Response::make();
 	}
 
 }

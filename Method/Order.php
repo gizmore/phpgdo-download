@@ -1,6 +1,7 @@
 <?php
 namespace GDO\Download\Method;
 
+use GDO\Core\GDT;
 use GDO\Download\GDO_Download;
 use GDO\Download\GDO_DownloadToken;
 use GDO\Form\GDT_Form;
@@ -22,7 +23,7 @@ final class Order extends Payment_Order
 		]);
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		return $this->initOrderable();
 	}

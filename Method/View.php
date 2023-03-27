@@ -3,6 +3,7 @@ namespace GDO\Download\Method;
 
 use GDO\Core\GDO;
 use GDO\Core\GDO_Error;
+use GDO\Core\GDT;
 use GDO\Core\GDT_Response;
 use GDO\Download\GDO_Download;
 use GDO\Download\Module_Download;
@@ -42,7 +43,7 @@ final class View extends MethodCard
 		return $this->getObject();
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		# File
 		$dl = $this->getDownload();

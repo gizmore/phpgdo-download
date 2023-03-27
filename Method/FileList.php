@@ -26,13 +26,13 @@ final class FileList extends MethodQueryList
 		return t('link_downloads', [$count]);
 	}
 
-	protected function setupTitle(GDT_Table $table)
+	protected function setupTitle(GDT_Table $table): void
 	{
 		$count = GDO_Download::countDownloads();
 		$table->title('link_downloads', [$count]);
 	}
 
-	public function isGuestAllowed(): bool
+	public function isGuestAllowed(): string
 	{
 		return Module_Download::instance()->cfgGuestDownload();
 	}

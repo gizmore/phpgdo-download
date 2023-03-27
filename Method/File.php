@@ -1,6 +1,7 @@
 <?php
 namespace GDO\Download\Method;
 
+use GDO\Core\GDT;
 use GDO\Core\GDT_Hook;
 use GDO\Core\GDT_Object;
 use GDO\Core\Method;
@@ -34,7 +35,7 @@ final class File extends Method
 		return $this->gdoParameterValue('id');
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		$user = GDO_User::current();
 		$download = $this->getDownload();

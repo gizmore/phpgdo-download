@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace GDO\Download\Method;
 
 use GDO\Core\GDO;
@@ -17,7 +18,7 @@ use GDO\User\GDO_User;
  * Download CRUD form.
  * Sends approval mail.
  *
- * @version 7.0.1
+ * @version 7.0.3
  * @since 5.0.0
  *
  * @author gizmore
@@ -41,7 +42,7 @@ final class Crud extends MethodCrud
 		parent::createForm($form);
 		if (!$user->hasPermission('staff'))
 		{
-			$form->removeField('dl_price');
+			$form->removeFieldNamed('dl_price');
 		}
 	}
 
@@ -58,7 +59,7 @@ final class Crud extends MethodCrud
 		}
 	}
 
-	public function afterCreate(GDT_Form $form, GDO $gdo)
+	public function afterCreate(GDT_Form $form, GDO $gdo): void
 	{
 		$user = GDO_User::current();
 		if ($user->isStaff())
@@ -71,11 +72,11 @@ final class Crud extends MethodCrud
 		else
 		{
 			$this->onAcceptMail($form);
-			return $this->message('msg_download_awaiting_accept');
+			$this->message('msg_download_awaiting_accept');
 		}
 	}
 
-	private function onAcceptMail(GDT_Form $form)
+	private function onAcceptMail(GDT_Form $form): void
 	{
 		$iso = Trans::$ISO;
 		foreach (GDO_User::admins() as $admin)
@@ -90,10 +91,12 @@ final class Crud extends MethodCrud
 	### Accept Mail ###
 	###################
 
-	private function onAcceptMailTo(GDT_Form $form, GDO_User $user)
+	private function onAcceptMailTo(GDT_Form $form, GDO_User $user): void
 	{
+		/**
+		 * @var GDO_Download $dl
+		 */
 		$dl = $this->gdo;
-		$dl instanceof GDO_Download;
 
 		# Sender
 		$mail = Mail::botMail();
@@ -110,15 +113,15 @@ final class Crud extends MethodCrud
 		$link = GDT_Link::anchor(url('Download', 'Approve', "&id={$dl->getID()}&token={$dl->gdoHashcode()}"));
 		$args = [$username, $sitename, $type, $size, $title, $info, $uploader, $link];
 		$mail->setBody(tusr($user, 'mail_body_download_pending', $args));
-		$mail->setSubject(tust($user, 'mail_subj_download_pending', [$sitename]));
+		$mail->setSubject(tusr($user, 'mail_subj_download_pending', [$sitename]));
 
 		# Send
 		$mail->sendToUser($user);
 	}
 
-	protected function crudCreateTitle()
-	{
-		$this->title(t('mt_download_upload', [sitename()]));
-	}
+//	protected function crudCreateTitle()
+//	{
+//		$this->title(t('mt_download_upload', [sitename()]));
+//	}
 
 }
