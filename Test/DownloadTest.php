@@ -97,10 +97,10 @@ final class DownloadTest extends TestCase
 		$this->assert200('Test if download does work.');
 	}
 
-	public function testDelete() {}
-
-	public function testUnlock() {}
-
-	public function testPayment() {}
+//	public function testDelete() {}
+//
+//	public function testUnlock() {}
+//
+//	public function testPayment() {}
 
 }
