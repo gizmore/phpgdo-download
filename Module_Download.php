@@ -39,8 +39,10 @@ final class Module_Download extends GDO_Module
 	public function getDependencies(): array
 	{
 		return [
+			'Category',
 			'File',
 			'Payment',
+			'Votes',
 		];
 	}
 
