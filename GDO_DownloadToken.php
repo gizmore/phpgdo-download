@@ -28,7 +28,7 @@ final class GDO_DownloadToken extends GDO implements Orderable
 	#############
 	public static function hasToken(GDO_User $user, GDO_Download $dl)
 	{
-		return self::table()->select('1')->where("dlt_user={$user->getID()} AND dlt_download={$dl->getID()}")->first()->exec()->fetchValue() === '1';
+		return self::table()->select('1')->where("dlt_user={$user->getID()} AND dlt_download={$dl->getID()}")->first()->exec()->fetchVar() === '1';
 	}
 
 	public function isPriceWithTax() { return false; }
