@@ -28,7 +28,7 @@ final class Order extends Payment_Order
 		return $this->initOrderable();
 	}
 
-	public function createForm(GDT_Form $form): void {}
+	protected function createForm(GDT_Form $form): void {}
 
 	public function onCancelOrder(): void {}
 

@@ -2,7 +2,7 @@
 namespace GDO\Download\Method;
 
 use GDO\Core\GDO;
-use GDO\Core\GDO_Error;
+use GDO\Core\GDO_Exception;
 use GDO\Core\GDT;
 use GDO\Core\GDT_Response;
 use GDO\Download\GDO_Download;
@@ -52,7 +52,7 @@ final class View extends MethodCard
 		$user = GDO_User::current();
 		if (!$dl->canView($user))
 		{
-			throw new GDO_Error('err_gdo_not_found',
+			throw new GDO_Exception('err_gdo_not_found',
 				[
 					$dl->gdoHumanName(),
 					$dl->getID(),

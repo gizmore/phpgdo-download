@@ -36,7 +36,7 @@ final class Crud extends MethodCrud
 		Module_Download::instance()->renderTabs();
 	}
 
-	public function createForm(GDT_Form $form): void
+	protected function createForm(GDT_Form $form): void
 	{
 		$user = GDO_User::current();
 		parent::createForm($form);
